@@ -4,10 +4,14 @@ import warnings
 import time
 import os
 import pygame
+import numpy as np
+
 
 roi = [0, 0, 0, 0]
 drawing = False 
 roi_set = False
+
+privacy_mode = False
 
 def draw_roi(event, x, y, flags, param):
     global roi, drawing
@@ -29,7 +33,7 @@ def draw_roi(event, x, y, flags, param):
             roi[1], roi[3] = roi[3], roi[1]
 
 warnings.filterwarnings("ignore", category=UserWarning, module="torch.cuda")
-model = YOLO('yolov8m.pt') #if yolov8 midium is so heavy, you can use yolov8n, yolov8s
+model = YOLO('yolov8m.pt') #if yolov8m is so heavy, you can use yolov8n, yolov8s
 TARGET_CLASS_NAME = 'cell phone'
 
 cap = cv2.VideoCapture(0, cv2.CAP_DSHOW)
@@ -52,14 +56,14 @@ else:
 
 ALARM_DURATION = 3.0
 alarm_trigger_time = 0.0
-WINDOW_NAME = 'REAL TIME LOGIC TEST (s: Set, r: Reset, q: Quit)'
+WINDOW_NAME = 'YOLOv8DTC ONLINE'
 
 cv2.namedWindow(WINDOW_NAME, cv2.WINDOW_NORMAL)
 cv2.setMouseCallback(WINDOW_NAME, draw_roi)
 
 print("--- Step 1. Set ROI ---")
 print("1. DRAG MOUSE TO SET ROI")
-print("2. 'S' Select, 'R' Reset, 'Q' Quit")
+print("2. 'S' Select, 'R' Reset, 'P' Privacy Mode,'Q' Quit")
 
 while True:
     ret, frame = cap.read()
@@ -77,6 +81,7 @@ while True:
     else:
         results = model(frame, device=0, verbose=False, imgsz=640, classes=[0, 67]) 
         annotated_frame = results[0].plot()
+        frame_h, frame_w, _ = frame.shape
 
         object_in_roi = False
         person_detected = False
@@ -84,18 +89,35 @@ while True:
 
         ROI_X_START, ROI_Y_START, ROI_X_END, ROI_Y_END = roi
 
+        frame_h, frame_w, _ = annotated_frame.shape
+
         for r in results:
             for box in r.boxes:
                 class_id = int(box.cls)
                 class_name = model.names[class_id]
                 
+                x1, y1, x2, y2 = map(int,box.xyxy[0])
+
                 if class_name == 'person':
                     person_detected = True
+                    
+                    if privacy_mode:
+                        px1, py1 = max(0,x1), max(0,y1)
+                        px2, py2 = min(frame_w,x2), min(frame_h,y2)
+
+                        if (px2 - px1) > 0 and (py2 - py1) > 0:
+                            person_roi = annotated_frame[py1:py2, px1:px2]
+
+                        try:
+                            blurred_roi = cv2.GaussianBlur(person_roi, (99, 99), 30)
+                            annotated_frame[py1:py2, px1:px2] = blurred_roi
+                        except Exception as e:
+                            pass                        
 
                 if class_name == TARGET_CLASS_NAME:
                     target_object_count += 1
                     
-                    x1, y1, x2, y2 = box.xyxy[0] 
+                    x1, y1, x2, y2 = map(int, box.xyxy[0]) 
                     
                     cx = int((x1 + x2) / 2)
                     cy = int((y1 + y2) / 2)
@@ -140,6 +162,9 @@ while True:
             roi_set = False
             print("--- Step 1: Reset ROI ---")
             cv2.setMouseCallback(WINDOW_NAME, draw_roi)
+    elif key == ord('p'):
+        privacy_mode = not privacy_mode
+        print(f"Privacy Mode : {'ON' if privacy_mode else 'OFF'}")
 
 cap.release()
 cv2.destroyAllWindows()
