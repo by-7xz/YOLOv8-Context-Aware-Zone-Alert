@@ -29,7 +29,7 @@ This Program detects a target object(e.g., Cell Phone, Bottle, Cup) entering a d
 
 2. **Instqall Pytorch (Important for RTX50 Users)**
     If you are using RTX 50 Series, or Newer, You must install cu128 or Newer:
-    ``pip install --pre torch torchvision torchaudio --index-url [https://download.pytorch.org/whl/cu128](https://download.pytorch.org/whl/cu128)
+    pip install --pre torch torchvision torchaudio --index-url [https://download.pytorch.org/whl/cu128](https://download.pytorch.org/whl/cu128)
 
     For other GPU, Install standard version:
     pip install torch torchvision --index-url [https://download.pytorch.org/whl/cu126](https://download.pytorch.org/whl/cu126)
