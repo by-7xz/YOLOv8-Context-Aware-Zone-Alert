@@ -12,6 +12,7 @@ This Program detects a target object(e.g., Cell Phone, Bottle, Cup) entering a d
 - **ROI (Region of Interest) Interaction:** Detects when the target object enters the specific zone (e.g., Crosswalk(when target is phone), etc.).
 - **Real-time Monitoring:** Supports Every Webcams(default 1080p)
 - **Auto-Latch Alarm:** Alarm persists for a set duration (default 3s) even if the object disappears quickly.
+- **Auto Blur Privacy Mode**
 
 ## Requirements
 
@@ -50,7 +51,7 @@ Controls
 * Drag Mouse For set ROI
 * 'S' Key : Start Detection (Set ROI)
 * 'R' Key : Reset ROI
+* 'P' Key : Privacy Mode(Blur)
 * 'Q' Key : Quit Program
-
 ## License
 This project is licensed under the GPLv3 License - see the LICENSE file for details
