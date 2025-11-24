@@ -13,19 +13,6 @@ This Program detects a target object(e.g., Cell Phone, Bottle, Cup) entering a d
 - **Real-time Monitoring:** Supports Every Webcams(default 1080p)
 - **Auto-Latch Alarm:** Alarm persists for a set duration (default 3s) even if the object disappears quickly.
 
-## Usage
-Run check gpu and check cuda status:
-``python check_gpu.py``
-
-Run main script:
-``python main.py``
-
-Controls
-* Drag Mouse For set ROI
-* 'S' Key : Start Detection (Set ROI)
-* 'R' Key : Reset ROI
-* 'Q' Key : Quit Program
-
 ## Requirements
 
 - Python 3.10 or 3.11 (Worked on 3.11.9)
@@ -52,6 +39,19 @@ Controls
 5. **Install Dependencies**
    ```
    pip install -r requirements.txt
-   
+
+## Usage
+Run check gpu and check cuda status:
+``python check_gpu.py``
+
+Run main script:
+``python main.py``
+
+Controls
+* Drag Mouse For set ROI
+* 'S' Key : Start Detection (Set ROI)
+* 'R' Key : Reset ROI
+* 'Q' Key : Quit Program
+
 ## License
 This project is licensed under the GPLv3 License - see the LICENSE file for details
