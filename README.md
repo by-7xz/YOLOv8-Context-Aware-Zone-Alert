@@ -13,6 +13,19 @@ This Program detects a target object(e.g., Cell Phone, Bottle, Cup) entering a d
 - **Real-time Monitoring:** Supports Every Webcams(default 1080p)
 - **Auto-Latch Alarm:** Alarm persists for a set duration (default 3s) even if the object disappears quickly.
 
+## Usage
+Run check gpu and check cuda status:
+``python check_gpu.py``
+
+Run main script:
+``python main.py``
+
+Controls
+* Drag Mouse For set ROI
+* 'S' Key : Start Detection (Set ROI)
+* 'R' Key : Reset ROI
+* 'Q' Key : Quit Program
+
 ## Requirements
 
 - Python 3.10 or 3.11 (Worked on 3.11.9)
@@ -27,31 +40,18 @@ This Program detects a target object(e.g., Cell Phone, Bottle, Cup) entering a d
     git clone [https://github.com/by-7xz/YOLOv8-Context-Aware-Zone-Alert.git](https://github.com/by-7xz/YOLOv8-Context-Aware-Zone-Alert.git)
     cd YOLOv8-Context-Aware-Zone-Alert
 
-2. **Instqall Pytorch (Important for RTX50 Users)**
-    If you are using RTX 50 Series, or Newer, You must install cu128 or Newer:
+2. **Install Pytorch (Important for RTX50 Users)**
+    ```If you are using RTX 50 Series, or Newer, You must install cu128 or Newer:
     pip install --pre torch torchvision torchaudio --index-url [https://download.pytorch.org/whl/cu128](https://download.pytorch.org/whl/cu128)
-
-    For other GPU, Install standard version:
+3. **For other GPU, Install standard version**
+   ```
     pip install torch torchvision --index-url [https://download.pytorch.org/whl/cu126](https://download.pytorch.org/whl/cu126)
-    
-    For CPU, Install CPU Version
-    pip install torch torchvision
-
-4. **Install Dependencies**
-    pip install =r requirements.txt
-
-## Usage
-Run check gpu and check cuda status:
-python check_gpu.py
-
-Run main script:
-python main.py
-
-Controls
-* Drag Mouse For set ROI
-* 'S' Key : Start Detection (Set ROI)
-* 'R' Key : Reset ROI
-* 'Q' Key : Quit Program
-
+4. **For CPU, Install CPU Version**
+   ```
+   pip install torch torchvision
+5. **Install Dependencies**
+   ```
+   pip install -r requirements.txt
+   
 ## License
 This project is licensed under the GPLv3 License - see the LICENSE file for details
