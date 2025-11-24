@@ -39,7 +39,6 @@ This Program detects a target object(e.g., Cell Phone, Bottle, Cup) entering a d
 5. **Install Dependencies**
    ```
    pip install -r requirements.txt
-
 ## Usage
 Run check gpu and check cuda status:
 ``python check_gpu.py``
