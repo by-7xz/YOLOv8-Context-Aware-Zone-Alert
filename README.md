@@ -33,10 +33,11 @@ This Program detects a target object(e.g., Cell Phone, Bottle, Cup) entering a d
 
     For other GPU, Install standard version:
     pip install torch torchvision --index-url [https://download.pytorch.org/whl/cu126](https://download.pytorch.org/whl/cu126)
+    
     For CPU, Install CPU Version
     pip install torch torchvision
 
-3. **Install Dependencies**
+4. **Install Dependencies**
     pip install =r requirements.txt
 
 ## Usage
