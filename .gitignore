@@ -1,0 +1,11 @@
+venv/
+env/
+.env
+
+__pycahce__/
+*.pyc
+
+.DS_Store
+Thumbs.db
+
+yolov8m.pt
