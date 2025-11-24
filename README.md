@@ -23,29 +23,29 @@ This Program detects a target object(e.g., Cell Phone, Bottle, Cup) entering a d
 ## Installation
 
 1. **Clone the repository**
-    ``bash
+    ```bash
     git clone [https://github.com/by-7xz/YOLOv8-Context-Aware-Zone-Alert.git](https://github.com/by-7xz/YOLOv8-Context-Aware-Zone-Alert.git)
     cd YOLOv8-Context-Aware-Zone-Alert
 
 2. **Instqall Pytorch (Important for RTX50 Users)**
     If you are using RTX 50 Series, or Newer, You must install cu128 or Newer:
-    pip install --pre torch torchvision torchaudio --index-url [https://download.pytorch.org/whl/cu128](https://download.pytorch.org/whl/cu128)
+    ``pip install --pre torch torchvision torchaudio --index-url [https://download.pytorch.org/whl/cu128](https://download.pytorch.org/whl/cu128)``
 
     For other GPU, Install standard version:
-    pip install torch torchvision --index-url [https://download.pytorch.org/whl/cu126](https://download.pytorch.org/whl/cu126)
+    ``pip install torch torchvision --index-url [https://download.pytorch.org/whl/cu126](https://download.pytorch.org/whl/cu126)``
     
     For CPU, Install CPU Version
-    pip install torch torchvision
+    ``pip install torch torchvision``
 
 4. **Install Dependencies**
-    pip install =r requirements.txt
+    ``pip install =r requirements.txt``
 
 ## Usage
 Run check gpu and check cuda status:
-python check_gpu.py
+``python check_gpu.py``
 
 Run main script:
-python main.py
+``python main.py``
 
 Controls
 * Drag Mouse For set ROI
